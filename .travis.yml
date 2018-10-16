@@ -5,6 +5,9 @@ cache:
       - "$HOME/.composer/cache"
       - "$HOME/.npm"
 
+env:
+  global:
+    - PECLSOLR=2.4.0
 matrix:
   fast_finish: true
   include:
@@ -21,7 +24,8 @@ services:
 before_install:
   - sudo apt-get update > /dev/null
   - "mongo --eval 'db.runCommand({setParameter: 1, textSearchEnabled: true})' admin"
-  - phpenv config-rm xdebug.ini
+  - if [[ $COVERAGE != yes ]]; then phpenv config-rm xdebug.ini; fi;
+  - pecl channel-update pecl.php.net
 
 install:
   # install php packages required for running YAWIK phpunit tests
@@ -32,9 +36,12 @@ install:
 
 before_script:
   # install Mongo extension
-  - pecl channel-update pecl.php.net
   - pecl install -f mongodb-stable
-  - pecl install -f solr-2.4.0
+
+  # install SOLR extension
+  - sh -c "wget http://pecl.php.net/get/$PECLSOLR.tgz"
+  - sh -c "tar xfz $PECLSOLR.tgz"
+  - sh -c "cd $PECLSOLR && phpize && ./configure && make && sudo make install"
 
   - phpenv config-add .travis/phpenv.ini
   - curl -sS https://getcomposer.org/installer | php
