@@ -34,6 +34,7 @@ install:
 
   # add composer's global bin directory to the path
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
+  - if [[ $COVERAGE != yes ]]; composer global require php-coveralls/php-coveralls; fi;
 
 before_script:
   # install Mongo extension
@@ -53,10 +54,8 @@ script:
 
 after_script:
   - 'if [[ $COVERAGE = yes ]]; then
-        cd `dirname $TRAVIS_BUILD_DIR`/yawik;
-        composer require php-coveralls/php-coveralls;
         cd `dirname $TRAVIS_BUILD_DIR`/yawik/module/Orders;
-        travis_retry php `dirname $TRAVIS_BUILD_DIR`/yawik/vendor/bin/php-coveralls -vvv;
+        travis_retry php php-coveralls -vvv;
         wget https://scrutinizer-ci.com/ocular.phar;
         travis_retry php ocular.phar code-coverage:upload --format=php-clover test/build/logs/clover.serialized;
     fi'
