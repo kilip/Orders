@@ -41,11 +41,11 @@ before_script:
 
   - phpenv config-add .travis/phpenv.ini
   - composer create-project --stability dev cross-solution/yawik=dev-develop ../yawik
-  # Solr directory still exists in 0.27.2
-  - rm -Rf `dirname $TRAVIS_BUILD_DIR`/yawik/module/Orders
   - mv ../`basename $TRAVIS_BUILD_DIR` `dirname $TRAVIS_BUILD_DIR`/yawik/module
 
 script:
+  - echo $TRAVIS_BUILD_DIR
+  - ls -l $TRAVIS_BUILD_DIR
   - cd `dirname $TRAVIS_BUILD_DIR`/yawik/module/Orders/test
   - 'if [[ $COVERAGE = yes ]]; then
         ./phpunit --verbose --coverage-clover=build/logs/clover.xml --coverage-php=build/logs/clover.serialized;
@@ -60,3 +60,4 @@ after_script:
         wget https://scrutinizer-ci.com/ocular.phar
         php ocular.phar code-coverage:upload --format=php-clover test/build/logs/clover.serialized
     fi'
+  - ls -l ~/.cache
