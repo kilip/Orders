@@ -58,5 +58,5 @@ after_script:
         cd `dirname $TRAVIS_BUILD_DIR`/yawik/module/Orders;
         travis_retry php `dirname $TRAVIS_BUILD_DIR`/yawik/vendor/bin/php-coveralls -vvv;
         wget https://scrutinizer-ci.com/ocular.phar;
-        php ocular.phar code-coverage:upload --format=php-clover test/build/logs/clover.serialized;
+        travis_retry php ocular.phar code-coverage:upload --format=php-clover test/build/logs/clover.serialized;
     fi'
