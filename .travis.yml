@@ -47,9 +47,9 @@ before_script:
 script:
   - cd test
   - 'if [[ $COVERAGE = yes ]]; then
-        phpunit -c test --verbose --coverage-clover=build/logs/clover.xml --coverage-php=build/logs/clover.serialized;
+        ./phpunit --verbose --coverage-clover=build/logs/clover.xml --coverage-php=build/logs/clover.serialized;
     else
-        phpunit -c test --verbose;
+        ./phpunit --verbose;
     fi'
 
 after_script:
