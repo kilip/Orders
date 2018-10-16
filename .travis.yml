@@ -6,8 +6,8 @@ cache:
       - "$HOME/.npm"
 
 env:
-  global:
-    - PECLSOLR=2.4.0
+  - PECLSOLR=solr-2.4.0
+
 matrix:
   fast_finish: true
   include:
@@ -35,6 +35,9 @@ install:
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
 
 before_script:
+  # add composer's global bin directory to the path
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+
   # install Mongo extension
   - pecl install -f mongodb-stable
 
@@ -44,9 +47,8 @@ before_script:
   - sh -c "cd $PECLSOLR && phpize && ./configure && make && sudo make install"
 
   - phpenv config-add .travis/phpenv.ini
-  - curl -sS https://getcomposer.org/installer | php
-  - ./composer.phar self-update
-  - ./composer.phar create-project --stability dev cross-solution/yawik=dev-develop ../yawik
+  - composer self-update
+  - composer create-project --stability dev cross-solution/yawik=dev-develop ../yawik
   # Solr directory still exists in 0.27.2
   - rm -Rf `dirname $TRAVIS_BUILD_DIR`/yawik/module/Orders
   - mv ../`basename $TRAVIS_BUILD_DIR` `dirname $TRAVIS_BUILD_DIR`/yawik/module
