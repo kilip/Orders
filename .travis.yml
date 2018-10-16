@@ -6,7 +6,8 @@ cache:
       - "$HOME/.npm"
 
 env:
-  - PECLMONGO=mongodb-stable
+  global:
+    - PECLMONGO="mongodb-stable"
 
 matrix:
   fast_finish: true
@@ -16,7 +17,7 @@ matrix:
     - php: '7.1'
     - php: '7.2'
     - php: '7.2'
-      env: PECLMONGO=mongodb-stable COVERAGE=yes
+      env: COVERAGE=yes
 
 services:
   - mongodb
@@ -45,7 +46,7 @@ before_script:
   - mv ../`basename $TRAVIS_BUILD_DIR` `dirname $TRAVIS_BUILD_DIR`/yawik/module
 
 script:
-  - cd test
+  - cd `dirname $TRAVIS_BUILD_DIR`/yawik/module/Orders/test
   - 'if [[ $COVERAGE = yes ]]; then
         ./phpunit --verbose --coverage-clover=build/logs/clover.xml --coverage-php=build/logs/clover.serialized;
     else
@@ -57,5 +58,5 @@ after_script:
         cd `dirname $TRAVIS_BUILD_DIR`/yawik/module/Orders
         php `dirname $TRAVIS_BUILD_DIR`/yawik/vendor/bin/coveralls -vvv
         wget https://scrutinizer-ci.com/ocular.phar
-        php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.serialized
+        php ocular.phar code-coverage:upload --format=php-clover test/build/logs/clover.serialized
     fi'
