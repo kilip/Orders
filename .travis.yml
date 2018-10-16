@@ -6,7 +6,7 @@ cache:
       - "$HOME/.npm"
 
 env:
-  - PECLSOLR=solr-2.4.0
+  - PECLMONGO=mongodb-stable
 
 matrix:
   fast_finish: true
@@ -39,15 +39,9 @@ before_script:
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
 
   # install Mongo extension
-  - pecl install -f mongodb-stable
-
-  # install SOLR extension
-  - sh -c "wget http://pecl.php.net/get/$PECLSOLR.tgz"
-  - sh -c "tar xfz $PECLSOLR.tgz"
-  - sh -c "cd $PECLSOLR && phpize && ./configure && make && sudo make install"
+  - pecl install -f ${PECLMONGO}
 
   - phpenv config-add .travis/phpenv.ini
-  - composer self-update
   - composer create-project --stability dev cross-solution/yawik=dev-develop ../yawik
   # Solr directory still exists in 0.27.2
   - rm -Rf `dirname $TRAVIS_BUILD_DIR`/yawik/module/Orders
@@ -56,9 +50,9 @@ before_script:
 script:
   - cd `dirname $TRAVIS_BUILD_DIR`/yawik/module/Orders/test
   - 'if [[ $COVERAGE = yes ]]; then
-        ./vendor/bin/phpunit -c test --verbose --coverage-clover=build/logs/clover.xml --coverage-php=build/logs/clover.serialized;
+        phpunit -c test --verbose --coverage-clover=build/logs/clover.xml --coverage-php=build/logs/clover.serialized;
     else
-        ./vendor/bin/phpunit -c test --verbose;
+        phpunit -c test --verbose;
     fi'
 
 after_script:
@@ -66,5 +60,5 @@ after_script:
         cd `dirname $TRAVIS_BUILD_DIR`/yawik/module/Orders
         php `dirname $TRAVIS_BUILD_DIR`/yawik/vendor/bin/coveralls -vvv
         wget https://scrutinizer-ci.com/ocular.phar
-        php ocular.phar code-coverage:upload --format=php-clover test/build/logs/clover.serialized
+        php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.serialized
     fi'
