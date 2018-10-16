@@ -16,7 +16,7 @@ matrix:
     - php: '7.1'
     - php: '7.2'
     - php: '7.2'
-      env: COVERAGE=yes
+      env: PECLMONGO=mongodb-stable COVERAGE=yes
 
 services:
   - mongodb
@@ -35,9 +35,6 @@ install:
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
 
 before_script:
-  # add composer's global bin directory to the path
-  - export PATH="$HOME/.composer/vendor/bin:$PATH"
-
   # install Mongo extension
   - pecl install -f ${PECLMONGO}
 
