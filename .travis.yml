@@ -53,6 +53,7 @@ script:
 
 after_script:
   - 'if [[ $COVERAGE = yes ]]; then
+        cd `dirname $TRAVIS_BUILD_DIR`/yawik;
         composer require satooshi/php-coveralls ^1.0;
         cd `dirname $TRAVIS_BUILD_DIR`/yawik/module/Orders;
         php `dirname $TRAVIS_BUILD_DIR`/yawik/vendor/bin/coveralls -vvv;
