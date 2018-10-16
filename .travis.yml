@@ -34,7 +34,7 @@ install:
 
   # add composer's global bin directory to the path
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
-  - if [[ $COVERAGE != yes ]]; composer global require php-coveralls/php-coveralls; fi;
+  - if [[ $COVERAGE = yes ]]; composer global require php-coveralls/php-coveralls; fi;
 
 before_script:
   # install Mongo extension
