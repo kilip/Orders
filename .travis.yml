@@ -49,7 +49,7 @@ script:
         ./vendor/bin/phpunit --verbose --coverage-clover=build/logs/clover.xml --coverage-php=build/logs/clover.serialized;
     else
         ./vendor/bin/phpunit --verbose;
-        ./vendor/bin/behat
+        ./vendor/bin/behat;
     fi'
 
 after_script:
