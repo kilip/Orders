@@ -1,5 +1,8 @@
 <?php
 $manifestFile = __DIR__.'/../../sandbox/public/build/manifest.json';
+if (!is_dir($dir=dirname($manifestFile))) {
+    mkdir($dir, 0755, true);
+}
 if (!is_file($manifestFile)) {
     file_put_contents($manifestFile, '{}', LOCK_EX);
 }
