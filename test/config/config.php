@@ -33,6 +33,7 @@ return [
         'config_glob_paths' => array(
             __DIR__.'/autoload/{,*.}{global,local}.php',
         ),
+        'cache_dir' => __DIR__.'/../cache'
     ],
     'core_options' => [
         'logDir' => __DIR__.'/../log',

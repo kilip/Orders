@@ -7883,13 +7883,13 @@
             "version": "dev-develop",
             "source": {
                 "type": "git",
-                "url": "git@github.com:yawik/behat.git",
-                "reference": "ea03b42cbe51e0dc76b03baf8a4e19736b5159d5"
+                "url": "https://github.com/yawik/behat.git",
+                "reference": "23c2190fc65fcc0c1341afbab5af4d55b4aa05e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yawik/behat/zipball/ea03b42cbe51e0dc76b03baf8a4e19736b5159d5",
-                "reference": "ea03b42cbe51e0dc76b03baf8a4e19736b5159d5",
+                "url": "https://api.github.com/repos/yawik/behat/zipball/23c2190fc65fcc0c1341afbab5af4d55b4aa05e5",
+                "reference": "23c2190fc65fcc0c1341afbab5af4d55b4aa05e5",
                 "shasum": ""
             },
             "require": {
@@ -7939,7 +7939,7 @@
                 "yawik",
                 "zf3"
             ],
-            "time": "2018-10-22T12:28:45+00:00"
+            "time": "2018-10-22T14:28:13+00:00"
         }
     ],
     "aliases": [],
