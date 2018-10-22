@@ -1,4 +1,8 @@
 <?php
+$manifestFile = __DIR__.'/../../sandbox/public/build/manifest.json';
+if (!is_file($manifestFile)) {
+    file_put_contents($manifestFile, '{}', LOCK_EX);
+}
 return [
     'doctrine' =>[
         'connection' =>[
@@ -19,7 +23,7 @@ return [
     ],
     'view_helper_config' => [
         'asset' => [
-            'resource_map' => json_decode(file_get_contents(__DIR__.'/../../sandbox/public/build/manifest.json'), true),
+            'resource_map' => json_decode(file_get_contents($manifestFile), true),
         ]
     ]
 ];

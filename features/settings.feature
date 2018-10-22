@@ -12,3 +12,4 @@ Feature: Settings
     And I press "Save"
     And I wait for the ajax response
     Then I should see "Changes successfully saved"
+    And I should see "Hello World"
