@@ -29,22 +29,13 @@ before_install:
 
 install:
   # install php packages required for running YAWIK phpunit tests
-  - sudo apt-get install -y --force-yes php5-intl php5-curl php5-xsl
-
-  # add composer's global bin directory to the path
-  - export PATH="$HOME/.composer/vendor/bin:$PATH"
-  - if [[ $COVERAGE = yes ]]; then composer global require php-coveralls/php-coveralls; fi;
-
-before_script:
-  # install Mongo extension
   - pecl install -f ${PECLMONGO}
-
   - phpenv config-add .travis/phpenv.ini
-  - composer create-project --stability dev cross-solution/yawik=dev-develop ../yawik
-  - mv $TRAVIS_BUILD_DIR ../yawik/module/Orders
+  - composer install
+  - ./vendor/bin/yawik assets:install --relative
+  - yarn install
 
 script:
-  - cd `dirname $TRAVIS_BUILD_DIR`/yawik/module/Orders/test
   - 'if [[ $COVERAGE = yes ]]; then
         ./phpunit --verbose --coverage-clover=build/logs/clover.xml --coverage-php=build/logs/clover.serialized;
     else
@@ -53,10 +44,8 @@ script:
 
 after_script:
   - 'if [[ $COVERAGE = yes ]]; then
-        cd `dirname $TRAVIS_BUILD_DIR`/yawik/module/Orders;
-        mkdir -p test/build;
-        mv ../../test/build/logs test/build/logs;
+        composer require php-coveralls/php-coveralls;
         travis_retry php-coveralls -vvv;
         wget https://scrutinizer-ci.com/ocular.phar;
-        travis_retry php ocular.phar code-coverage:upload --format=php-clover ../../test/build/logs/clover.serialized;
+        travis_retry php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.serialized;
     fi'
