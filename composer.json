@@ -31,7 +31,6 @@
         "yawik/organizations": "~0.32@dev"
     },
     "require-dev": {
-        "symfony/webpack-encore-pack": "^1.0",
         "phpunit/phpunit": "^5.7",
         "yawik/behat": "~0.32@dev"
     },
