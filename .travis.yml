@@ -51,6 +51,7 @@ before_script:
       composer run serve --timeout=0 > /dev/null 2>&1 &
       sleep 3;
     fi'
+  - mkdir -p build/behat
 
 script:
   - 'if [[ $COVERAGE = yes ]]; then
