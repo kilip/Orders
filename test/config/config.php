@@ -3,7 +3,8 @@ return [
     'doctrine' => [
             'connection' => [
                 'odm_default' =>[
-                    'connectionString' => 'mongodb://localhost:27017/',
+                    'connectionString' => 'mongodb://localhost:27017/YAWIK_TEST',
+                    'dbname' => 'YAWIK_TEST',
                 ]
             ],
             'configuration' => [
@@ -19,6 +20,7 @@ return [
         'Jobs',
         'Applications',
         'Settings',
+        'Organizations',
         'Orders',
     ]),
     'module_listener_options' => [
@@ -29,7 +31,7 @@ return [
 
         // What configuration files should be autoloaded
         'config_glob_paths' => array(
-            'config/autoload/{,*.}{global,local}.php'
+            __DIR__.'/autoload/{,*.}{global,local}.php',
         ),
     ],
     'core_options' => [
@@ -50,16 +52,4 @@ return [
             ]
         ]
     ],
-    "view_manager" => [
-        'template_map' => [
-            'layout/layout' => getcwd().'/views/layout.phtml',
-            "startpage" => __DIR__.'/../sandbox/views/startpage.phtml',
-        ],
-        'template_path_stack' => [__DIR__.'/../sandbox/views']
-    ],
-    'view_helper_config' => [
-        'asset' => [
-            'resource_map' => json_decode(file_get_contents(__DIR__.'/../sandbox/public/build/manifest.json'), true),
-        ]
-    ]
 ];

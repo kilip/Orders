@@ -1,5 +1,4 @@
 <?php
-$foo = $bar;
 return array(
     'doctrine' =>
         array(
@@ -7,7 +6,7 @@ return array(
                 array(
                     'odm_default' =>
                         array(
-                            'connectionString' => 'mongodb://localhost:27017/',
+                            'connectionString' => 'mongodb://localhost:27017/YAWIK_TEST',
                         ),
                 ),
             'configuration' =>

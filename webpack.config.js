@@ -1,5 +1,4 @@
-var Encore = require('@symfony/webpack-encore');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+let Encore = require('@symfony/webpack-encore');
 
 Encore
     .setOutputPath('test/sandbox/public/build/')
@@ -17,7 +16,7 @@ Encore
 ;
 
 const core = Encore.getWebpackConfig();
-//core.name = 'core';
+core.name = 'core';
 core.resolve = {
     extensions: ['.js'],
     alias: {
