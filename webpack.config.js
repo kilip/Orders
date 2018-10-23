@@ -1,4 +1,5 @@
 let Encore = require('@symfony/webpack-encore');
+let CopyWebpackPlugin = require('copy-webpack-plugin');
 
 Encore
     .setOutputPath('test/sandbox/public/build/')
@@ -14,6 +15,12 @@ Encore
         jQuery: 'jquery',
         'global.jQuery': 'jquery',
     })
+    .addPlugin(new CopyWebpackPlugin([
+        {
+            from: "./node_modules/tinymce/skins",
+            to: "skins"
+        }
+    ]))
 ;
 
 const core = Encore.getWebpackConfig();

@@ -8,6 +8,7 @@
   "license": "MIT",
   "devDependencies": {
     "@symfony/webpack-encore": "^0.20.1",
+    "copy-webpack-plugin": "^4.5.4",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "yawik-dev": "~0.32.0"

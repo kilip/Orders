@@ -26,7 +26,9 @@ return [
     'core_options' => [
         'logDir' => __DIR__.'/../log',
         'cacheDir' => __DIR__.'/../cache',
-        'publicDir' => __DIR__.'/../sandbox/public'
+        'publicDir' => __DIR__.'/../sandbox/public',
+        'system_message_email' => 'developer@yawik.org',
+        'systemMessageEmail' => 'developer@yawik.org',
     ],
     'log' => [
         'Core/Log' => [
