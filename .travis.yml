@@ -65,7 +65,7 @@ after_failure:
   - "./vendor/lakion/mink-debug-extension/travis/tools/upload-textfiles \"build/behat/*.log\""
   - "./vendor/lakion/mink-debug-extension/travis/tools/upload-textfiles \"log/*.log\""
   - "./vendor/lakion/mink-debug-extension/travis/tools/upload-textfiles \"log/tracy/*.*\""
-  - "IMGUR_API_KEY=bec050c54e1bb52 ./vendor/bin/upload-screenshots build/behat/*.png"
+  - "IMGUR_CLIENT_ID=bec050c54e1bb52 ./vendor/bin/imgur-uploader build/behat/*.png"
 
 after_script:
   - 'if [[ $COVERAGE = yes ]]; then

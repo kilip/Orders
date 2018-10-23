@@ -22,7 +22,7 @@ return [
         ],
     ],
     'core_options' => [
-        'system_message_email' => 'me@itstoni.com',
+        'system_message_email' => 'developer@yawik.org',
     ],
     'view_helper_config' => [
         'asset' => [

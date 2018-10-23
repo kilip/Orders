@@ -4,6 +4,7 @@ Encore
     .setOutputPath('test/sandbox/public/build/')
     .setPublicPath('/build')
     .addEntry('yawik', './test/sandbox/public/modules/Core/yawik.js')
+    .addEntry('bootstrap-dialog', './test/sandbox/public/modules/Core/bootstrap-dialog.js')
     .cleanupOutputBeforeBuild()
     .enableSourceMaps(!Encore.isProduction())
     .enableVersioning(Encore.isProduction())

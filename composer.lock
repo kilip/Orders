@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8af23f52b8726e677df069447d8f5879",
+    "content-hash": "d17aefceeb9e2ea792c0494bff6038aa",
     "packages": [
         {
             "name": "alcaeus/mongo-php-adapter",
@@ -1123,6 +1123,59 @@
             "time": "2018-09-27T12:22:55+00:00"
         },
         {
+            "name": "jmikola/geojson",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jmikola/geojson.git",
+                "reference": "6ec3016cc0215667b7775f6ead7bd0337ad66eee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jmikola/geojson/zipball/6ec3016cc0215667b7775f6ead7bd0337ad66eee",
+                "reference": "6ec3016cc0215667b7775f6ead7bd0337ad66eee",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.7"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "GeoJson\\": "src/"
+                },
+                "classmap": [
+                    "stubs/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeremy Mikola",
+                    "email": "jmikola@gmail.com"
+                }
+            ],
+            "description": "GeoJSON implementation for PHP",
+            "homepage": "https://github.com/jmikola/geojson",
+            "keywords": [
+                "geo",
+                "geojson",
+                "geospatial"
+            ],
+            "time": "2015-09-27T15:35:21+00:00"
+        },
+        {
             "name": "mikemix/zf2htmlpurifier",
             "version": "1.0.1",
             "source": {
@@ -2234,12 +2287,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yawik/core.git",
-                "reference": "805e0805086a8d9dae47e04ba3290afaf0eb4b4b"
+                "reference": "811fefbf8665b3064214ae655c3d2317728dc823"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yawik/core/zipball/805e0805086a8d9dae47e04ba3290afaf0eb4b4b",
-                "reference": "805e0805086a8d9dae47e04ba3290afaf0eb4b4b",
+                "url": "https://api.github.com/repos/yawik/core/zipball/811fefbf8665b3064214ae655c3d2317728dc823",
+                "reference": "811fefbf8665b3064214ae655c3d2317728dc823",
                 "shasum": ""
             },
             "require": {
@@ -2259,6 +2312,15 @@
                 "symfony/finder": "^3.4",
                 "symfony/process": "^3.4",
                 "tracy/tracy": "^2.4",
+                "yawik/applications": "^0.32@dev",
+                "yawik/auth": "^0.32@dev",
+                "yawik/cv": "^0.32@dev",
+                "yawik/geo": "^0.32@dev",
+                "yawik/install": "^0.32@dev",
+                "yawik/jobs": "^0.32@dev",
+                "yawik/organizations": "~0.32@dev",
+                "yawik/pdf": "~0.32@dev",
+                "yawik/settings": "^0.32@dev",
                 "zendframework/zend-authentication": "^2.5",
                 "zendframework/zend-cache": "^2.7",
                 "zendframework/zend-captcha": "^2.7",
@@ -2332,7 +2394,7 @@
                 "yawik",
                 "zf3"
             ],
-            "time": "2018-10-22T17:02:57+00:00"
+            "time": "2018-10-23T03:48:55+00:00"
         },
         {
             "name": "yawik/cv",
@@ -2389,6 +2451,64 @@
                 "yawik"
             ],
             "time": "2018-10-22T06:41:36+00:00"
+        },
+        {
+            "name": "yawik/geo",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yawik/geo.git",
+                "reference": "880b80b7f5bb582c2b386404436f0510f84548fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yawik/geo/zipball/880b80b7f5bb582c2b386404436f0510f84548fa",
+                "reference": "880b80b7f5bb582c2b386404436f0510f84548fa",
+                "shasum": ""
+            },
+            "require": {
+                "jmikola/geojson": "^1.0.0",
+                "yawik/core": "^0.32@dev"
+            },
+            "type": "yawik-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.32-dev"
+                },
+                "zf": {
+                    "module": "Geo"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Geo\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anthonius Munthi",
+                    "email": "me@itstoni.com"
+                },
+                {
+                    "name": "Mathias Gelhausen",
+                    "email": "gelhausen@cross-solution.de"
+                },
+                {
+                    "name": "Carsten Bleek",
+                    "email": "bleek@cross-solution.de"
+                }
+            ],
+            "description": "This package provide a Geo modules for yawik.",
+            "keywords": [
+                "module",
+                "yawik",
+                "zf3"
+            ],
+            "time": "2018-10-23T03:48:55+00:00"
         },
         {
             "name": "yawik/install",
@@ -2453,12 +2573,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yawik/jobs.git",
-                "reference": "fcc2660673b0f2956900bbb993677039ac69a3af"
+                "reference": "b7a1b07fab9a552a0fd61d430222f5848fcffe71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yawik/jobs/zipball/fcc2660673b0f2956900bbb993677039ac69a3af",
-                "reference": "fcc2660673b0f2956900bbb993677039ac69a3af",
+                "url": "https://api.github.com/repos/yawik/jobs/zipball/b7a1b07fab9a552a0fd61d430222f5848fcffe71",
+                "reference": "b7a1b07fab9a552a0fd61d430222f5848fcffe71",
                 "shasum": ""
             },
             "require": {
@@ -2502,7 +2622,7 @@
                 "yawik",
                 "zf3"
             ],
-            "time": "2018-10-22T06:41:36+00:00"
+            "time": "2018-10-23T03:48:55+00:00"
         },
         {
             "name": "yawik/organizations",
@@ -2560,6 +2680,63 @@
                 "zf3"
             ],
             "time": "2018-10-22T06:41:36+00:00"
+        },
+        {
+            "name": "yawik/pdf",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yawik/pdf.git",
+                "reference": "7a8a3daf176fd062755193bf6067cbf3474db116"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yawik/pdf/zipball/7a8a3daf176fd062755193bf6067cbf3474db116",
+                "reference": "7a8a3daf176fd062755193bf6067cbf3474db116",
+                "shasum": ""
+            },
+            "require": {
+                "yawik/core": "^0.32@dev"
+            },
+            "type": "yawik-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.32-dev"
+                },
+                "zf": {
+                    "module": "Pdf"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Pdf\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anthonius Munthi",
+                    "email": "me@itstoni.com"
+                },
+                {
+                    "name": "Mathias Gelhausen",
+                    "email": "gelhausen@cross-solution.de"
+                },
+                {
+                    "name": "Carsten Bleek",
+                    "email": "bleek@cross-solution.de"
+                }
+            ],
+            "description": "This package provide a PDF module for yawik.",
+            "keywords": [
+                "module",
+                "yawik",
+                "zf3"
+            ],
+            "time": "2018-10-19T11:05:00+00:00"
         },
         {
             "name": "yawik/settings",
@@ -7788,12 +7965,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yawik/behat.git",
-                "reference": "7ad13499da20522ab6c1a7018d31e729cd8779f8"
+                "reference": "b541accec8a28a49da1f8259acaff7a4f917309f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yawik/behat/zipball/7ad13499da20522ab6c1a7018d31e729cd8779f8",
-                "reference": "7ad13499da20522ab6c1a7018d31e729cd8779f8",
+                "url": "https://api.github.com/repos/yawik/behat/zipball/b541accec8a28a49da1f8259acaff7a4f917309f",
+                "reference": "b541accec8a28a49da1f8259acaff7a4f917309f",
                 "shasum": ""
             },
             "require": {
@@ -7807,6 +7984,10 @@
                 "novaway/common-contexts": "~2.0",
                 "se/selenium-server-standalone": "^2.52"
             },
+            "bin": [
+                "bin/imgur-uploader",
+                "bin/start-selenium"
+            ],
             "type": "yawik-module",
             "extra": {
                 "branch-alias": {
@@ -7843,23 +8024,16 @@
                 "yawik",
                 "zf3"
             ],
-            "time": "2018-10-22T16:26:55+00:00"
+            "time": "2018-10-23T04:16:45+00:00"
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
         "yawik/core": 20,
-        "yawik/applications": 20,
-        "yawik/auth": 20,
-        "yawik/jobs": 20,
-        "yawik/settings": 20,
-        "yawik/cv": 20,
-        "yawik/install": 20,
-        "yawik/organizations": 20,
         "yawik/behat": 20
     },
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],

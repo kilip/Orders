@@ -1,18 +1,5 @@
 <?php
 return [
-    'doctrine' => [
-            'connection' => [
-                'odm_default' =>[
-                    'connectionString' => 'mongodb://localhost:27017/YAWIK_TEST',
-                    'dbname' => 'YAWIK_TEST',
-                ]
-            ],
-            'configuration' => [
-                'odm_default' => [
-                    'default_db' => 'YAWIK_TEST',
-                ]
-            ]
-    ],
     'modules' => \Core\Bootstrap::generateModuleConfiguration([
         'Core',
         'Cv',
@@ -21,6 +8,7 @@ return [
         'Applications',
         'Settings',
         'Organizations',
+        'Geo',
         'Orders',
     ]),
     'module_listener_options' => [
